@@ -1,0 +1,11 @@
+# Test files — not needed at build time
+__tests__/
+e2e/
+playwright-report/
+test-results/
+jest.config.ts
+jest.setup.ts
+playwright.config.ts
+
+# Local env overrides (Vercel uses its own env vars)
+.env.local
