@@ -2,6 +2,36 @@
 
 A full-stack food delivery order management app built as a Sr Full Stack Developer assessment.
 
+## 🚀 Live Demo
+
+- **Frontend**: https://fooddash-frontend.vercel.app
+- **Backend API**: https://backend-production-0ad7.up.railway.app
+- **GitHub Repository**: https://github.com/pintu544/fooddash
+
+## 📋 Quick Start
+
+Clone and run locally:
+
+```bash
+git clone https://github.com/pintu544/fooddash.git
+cd fooddash
+npm install
+
+# Backend setup
+cd backend && cp .env.example .env
+# Edit .env with your DATABASE_URL
+
+# Run migrations & seed
+npx prisma migrate dev
+npx prisma db seed
+
+# Start in two terminals
+npm run dev:backend   # Terminal 1: Backend (port 4000)
+npm run dev:frontend  # Terminal 2: Frontend (port 3000)
+```
+
+Open [http://localhost:3000](http://localhost:3000)
+
 ## Tech Stack
 
 | Layer | Technology |
@@ -68,8 +98,8 @@ food-delivery/
 ### 1. Clone & Install
 
 ```bash
-git clone <repo-url>
-cd food-delivery
+git clone https://github.com/pintu544/fooddash.git
+cd fooddash
 npm install
 ```
 
@@ -156,8 +186,37 @@ npm run test:e2e
 
 ## Deployment
 
-- **Frontend**: Deploy to [Vercel](https://vercel.com). Set `NEXT_PUBLIC_API_URL` and `NEXT_PUBLIC_SOCKET_URL` to your backend URL.
-- **Backend + DB**: Deploy to [Railway](https://railway.app). Set `DATABASE_URL`, `PORT`, and `FRONTEND_URL`.
+### Live Deployment
+
+This project is deployed on:
+- **Frontend**: [Vercel](https://vercel.com) → https://fooddash-frontend.vercel.app
+- **Backend API**: [Railway](https://railway.app) → https://backend-production-0ad7.up.railway.app
+- **Database**: PostgreSQL on Railway
+
+### Deploy Your Own
+
+#### Vercel (Frontend)
+```bash
+cd frontend
+vercel --prod
+```
+
+Set environment variables in Vercel dashboard:
+- `NEXT_PUBLIC_API_URL` — your Railway backend URL
+- `NEXT_PUBLIC_SOCKET_URL` — your Railway backend URL
+
+#### Railway (Backend + PostgreSQL)
+```bash
+cd backend
+railway login
+railway up
+```
+
+Set environment variables on Railway:
+- `DATABASE_URL` — auto-provided by Postgres addon
+- `PORT` — `4000`
+- `FRONTEND_URL` — your Vercel app URL (for CORS)
+- `NODE_ENV` — `production`
 
 ## Architecture Notes
 
